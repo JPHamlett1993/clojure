@@ -1,0 +1,107 @@
+#CODE
+(defn num-digits [n]
+	(count (str n))
+)
+
+(defn power [n p]
+	(if (= p 0) 1 (* n (power n (dec p))))
+)
+
+(defn lst [n res]
+	(if (= (count res) n) res
+		(lst n (conj res n))
+	)
+)
+
+(defn to-dec [n base]
+	(reduce + (map * (map power (lst base []) (reverse (range 0 base))) n))	
+)
+
+(defn get-digit [n s c]
+	(if (< n s) c (get-digit (- n s) s (inc c)))
+)
+
+(defn trim [n]
+	(if (not= (first n) 0) n (trim (rest n)))
+)
+
+(defn from-dec 
+	([n base] (from-dec [] n base (map power (lst base []) (reverse (range 0 base)))))
+	([res n base factors] 
+		(if (= n 0) (trim res)	
+		(from-dec (conj res (get-digit n (first factors) 0)) (- n (* (first factors) (get-digit n (first factors) 0))) base (rest factors)))
+))
+
+(defn gcd [a b]
+	(if (= b 0) a (gcd b (mod a b)))
+)
+
+#TERMINAL
+hamle010@csel-kh1250-07:~$ clojure
+Clojure 1.4.0
+(defn num-digits [n]
+(count (str n))
+)
+#'user/num-digits
+user=> (num-digits 123)
+3
+user=> (num-digits 12)
+2
+user=> (num-digits 1)
+1
+(defn power [n p]
+(if (= p 0) 1 (* n (power n (dec p))))
+)
+
+(defn lst [n res]
+#'user/power
+(if (= (count res) n) res
+(lst n (conj res n))
+)
+)
+
+#'user/lst
+(defn to-dec [n base]
+(reduce + (map * (map power (lst base []) (reverse (range 0 base))) n))
+)
+
+#'user/to-dec
+(defn get-digit [n s c]
+(if (< n s) c (get-digit (- n s) s (inc c)))
+)
+
+#'user/get-digit
+(defn trim [n]
+(if (not= (first n) 0) n (trim (rest n)))
+)
+
+#'user/trim
+(defn from-dec 
+([n base] (from-dec [] n base (map power (lst base []) (reverse (range 0 base)))))
+([res n base factors] 
+(if (= n 0) (trim res)
+(from-dec (conj res (get-digit n (first factors) 0)) (- n (* (first factors) (get-digit n (first factors) 0))) base (rest factors)))
+))
+#'user/from-dec
+user=> (to-dec [1 1 3 1] 4)
+93
+user=> (from-dec (to-dec [1 1 3 1] 4) 7)
+(1 6 2)
+user=> (from-dec 1131 10)
+(1 1 3 1)
+(defn gcd [a b]
+(if (= b 0) a (gcd b (mod a b)))
+)
+#'user/gcd
+user=> (gcd 15 3)
+3
+user=> (gcd 7 49)
+7
+user=> (gcd 9 4)
+1
+user=> (gcd 1 3)
+1
+
+
+
+

@@ -1,0 +1,21 @@
+"The Structure and Interpretation of Computer Programs"
+(SICP) is a literary masterpiece.  It's not often that you can say that a technical book is a page-turner, 
+but that's just what I found SICP to be.  The book moves from topic to topic with rare ease and clarity, but
+more importantly it moves with purpose and mission.  As you read it, you can feel the authors slowly
+building a tension towards a climax.  The chapters fly by as you read about data structures, algorithms,
+message passing, first-class procedures, and so much else.  Each concept leads inevitably to the next.
+Each chapter adds to the ever building tension.  By time you are half-way through the book, the sense that
+something important is about to change becomes palpable. 
+
+And then something important changes!  Something you had not anticipated.  Something you should have
+guessed, but did not.  On page 216 they introduce a concept so familiar that most programming books start
+with it.  On page 216 they prove to you that you've had some wrong ideas about programming all along.  On
+page two hundred and sixteen, after talking about algorithms, data structures, recursion, iteration, trees,
+high-order procedures, scoping, local variables, data abstraction, closures, message-passing, and a
+plethora of other topics -- after all that, they introduce assignment!
+
+And with that elegant coup-de-grace (which is not the last in this book!), they vanquish the concept that
+programming is about manipulating state.  With that one stroke, they force you to look back on all you had
+done in the previous pages in a new and enlightened way -- a functional way.
+
+text from http://thecleancoder.blogspot.com/2010/08/why-clojure.html
